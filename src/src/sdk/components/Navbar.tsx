@@ -3,7 +3,7 @@ import "../../../styles/index.tsx";
 
 export default function Navbar() {
     return (
-        <nav className="Navbar navbar navbar-expand navbar-dark bg-dark header">
+        <nav data-testid="navbar" className="Navbar navbar navbar-expand navbar-dark bg-dark header">
         <a href="/odds" className="navbar-brand">
           Nhl Odds
         </a>

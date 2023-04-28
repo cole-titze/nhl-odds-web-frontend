@@ -8,7 +8,7 @@ import MatchupView from './src/matchups/components/MatchupView';
 
 export default function App() {
   return (
-    <div className="App">
+    <div data-testid="app" className="App">
       <Navbar />
       <div className="container mt-3 main">
         <Routes>
