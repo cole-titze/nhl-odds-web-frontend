@@ -10,11 +10,11 @@ ENV PATH /app/node_modules/.bin:$PATH
 # install app dependencies
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm install --silent
+RUN npm i
 
 # add app
 COPY . .
 
 EXPOSE 8081
 # start app
-CMD ["npm", "start"]
+CMD ["npm", "run", "serve"]

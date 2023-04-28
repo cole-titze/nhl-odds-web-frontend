@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../../../styles/index.tsx";
+import "../../../styles/index";
 
 export default function Navbar() {
     return (
