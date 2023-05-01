@@ -14,4 +14,4 @@ COPY . .
 
 EXPOSE 8081
 # start app
-CMD ["npm", "run", "serve"]
+ENTRYPOINT ["npm", "run", "serve"]
