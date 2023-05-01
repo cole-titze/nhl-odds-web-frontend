@@ -8,6 +8,7 @@ WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm i
+RUN npm install serve
 
 # add app
 COPY . .
