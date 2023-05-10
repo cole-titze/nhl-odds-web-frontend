@@ -17,7 +17,7 @@ export default function BasicDatePicker(props: IProps) {
 
   useEffect( () => {
     onChange(date?.toDate()??new Date());
-  }, [date]);
+  });
   return (
     <span className="input-spacing">
       <LocalizationProvider dateAdapter={AdapterDayjs}>

@@ -20,7 +20,7 @@ function DateRangePicker(props: IProps): JSX.Element {
     }
     useEffect( () => {
         onChange(dateRange);
-      }, [dateRange]);
+      });
     return (
         <span>
             <Stack justifyContent="center" direction="row" spacing={{ xs:1, s: 2 }}>
