@@ -34,5 +34,5 @@ jobs:
       with:
         token: ${{ secrets.REPO_PAT }}
         repository: ${{ github.repository }}
-        event-type: trigger-test-workflow
+        event-type: trigger-docker-workflow
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
