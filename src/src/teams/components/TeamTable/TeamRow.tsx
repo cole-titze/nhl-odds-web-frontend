@@ -1,6 +1,6 @@
-import { ITeam } from '../types/types'
+import { ITeam } from '../../types/types'
 import { Stack, Typography, Container, Chip } from '@mui/material';
-import { GetBackgroundColor, GetFontColor } from '../utils/logLossColorUtils';
+import { GetBackgroundColor, GetFontColor } from '../../utils/logLossColorUtils';
 
 interface IProps{
     team: ITeam
@@ -11,6 +11,8 @@ function TeamRow(props: IProps): JSX.Element {
     const logLossDifFormatted = logLossDif.toFixed(4);
     const vegasLogLoss = team.vegasLogLoss.toFixed(4);
     const modelLogLoss = team.modelLogLoss.toFixed(4);
+    const totalGameCount = team.totalGames;
+    const totalModelAccurateGameCount = team.totalAccurateModelGames;
     const fontColor = GetFontColor(logLossDif);
     const backgroundColor = GetBackgroundColor(logLossDif);
 
@@ -40,6 +42,12 @@ function TeamRow(props: IProps): JSX.Element {
             <Container className="center-content" sx={{width: 150}} component="div">
                 <Chip style={{color:fontColor, backgroundColor:backgroundColor}} label={logLossDifFormatted} />
             </Container>
+            <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
+                {totalModelAccurateGameCount}
+            </Typography>
+            <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
+                {totalGameCount}
+            </Typography>
         </Stack>
     );
 };

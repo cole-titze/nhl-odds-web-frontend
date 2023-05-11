@@ -20,5 +20,15 @@ export enum TEAM {
     teamName: string,
     logoUri: string,
     vegasLogLoss: number,
-    modelLogLoss: number
+    modelLogLoss: number,
+    totalGames: number,
+    totalAccurateModelGames: number,
+    totalAccurateVegasGames?: number,
+  }
+
+  export interface ISeasonStatTotals {
+    vegasLogLossTotal: number,
+    modelLogLossTotal: number,
+    totalGameCount: number,
+    totalModelAccurateGameCount: number,
   }

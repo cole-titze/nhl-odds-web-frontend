@@ -21,6 +21,12 @@ function TeamRowHeader(): JSX.Element {
             <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
                 Difference
             </Typography>
+            <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
+                Correct Count
+            </Typography>
+            <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
+                Games Played
+            </Typography>
         </Stack>
     );
 };
