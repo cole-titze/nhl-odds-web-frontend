@@ -13,14 +13,13 @@ interface IProps{
 }
 function BasicDatePicker(props: IProps) {
   const { onChange, defaultDate, label } = props;
-  const [date, setDate] = React.useState<Dayjs>(dayjs(defaultDate).set('hour', 0).set('minute', 0).set('second', 0).set('milliseconds', 0));
+  const [date, setDate] = React.useState<Dayjs>(dayjs(defaultDate));
 
   useEffect( () => {
     onChange(date.toDate());
   }, [onChange, date]);
 
   const setNewDate = useCallback( (newDate: Dayjs) => {
-    newDate.set('hour', 0).set('minute', 0).set('second', 0).set('milliseconds', 0);
     if(newDate.valueOf() === date.valueOf())
       return;
     setDate(newDate);
