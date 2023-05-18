@@ -1,9 +1,10 @@
-import { ITeamSeasonStats } from '../../types/types'
+import { ITeamSeasonStats } from '../types/types'
 import { Stack, Typography, Container, Chip } from '@mui/material';
-import { GetBackgroundColor, GetFontColor } from '../../utils/get-log-loss-color';
+import { GetBackgroundColor, GetFontColor } from '../utils/get-log-loss-color';
 
 interface IProps{
-    team: ITeamSeasonStats
+    team: ITeamSeasonStats,
+    year: number
 }
 function TeamRow(props: IProps): JSX.Element {
     const { team } = props;

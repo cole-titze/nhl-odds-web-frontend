@@ -1,34 +1,44 @@
-export enum TEAM {
-    home = 0,
-    away = 1
-  }
-  
-  export interface IMatchupTeam{
-    id: number,
-    locationName: string,
-    teamName: string,
-    logoUri: string,
-    vegasOdds: number,
-    modelOdds: number,
-    goals: number
-    team: TEAM
-  }
-  
-  export interface ITeam {
-    id: number,
-    locationName: string,
-    teamName: string,
-    logoUri: string,
-    vegasLogLoss: number,
-    modelLogLoss: number,
-    totalGames: number,
-    totalAccurateModelGames: number,
-    totalAccurateVegasGames?: number,
-  }
+import { IGameOdds } from "../../matchups/types/types";
 
-  export interface ISeasonStatTotals {
-    vegasLogLossTotal: number,
-    modelLogLossTotal: number,
-    totalGameCount: number,
-    totalModelAccurateGameCount: number,
-  }
+export enum TEAM {
+  home = 0,
+  away = 1
+}
+
+export interface ITeamsVM {
+  teams: Array<ITeamSeasonStats>,
+  seasonTotals: ISeasonStatTotals
+}
+
+export interface ITeamVM{
+  team: ITeamSeasonStats,
+  games: IGameOdds
+}
+
+export interface IMatchupTeam{
+  id: number,
+  locationName: string,
+  teamName: string,
+  logoUri: string,
+  vegasOdds: number,
+  modelOdds: number,
+  goals: number
+  team: TEAM
+}
+
+export interface ITeam {
+  id: number,
+  locationName: string,
+  teamName: string,
+  logoUri: string,
+}
+
+export interface ITeamSeasonStats extends ITeam, ISeasonStatTotals{}
+
+export interface ISeasonStatTotals {
+  vegasLogLoss: number,
+  modelLogLoss: number,
+  totalGameCount: number,
+  totalModelAccurateGameCount: number,
+  totalVegasAccurateGameCount: number,
+}

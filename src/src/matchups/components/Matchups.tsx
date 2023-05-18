@@ -3,11 +3,12 @@ import { Grid } from '@mui/material';
 import TeamCard from './TeamCard';
 import AtCard from './AtCard';
 import ScoreCard from './ScoreCard';
+import { memo } from 'react';
 
 interface IProps{
     matchups: IGameOdds[]
 }
-export default function Matchups(props: IProps): JSX.Element {
+function Matchups(props: IProps): JSX.Element {
     const { matchups } = props;
 
     return (
@@ -34,3 +35,5 @@ export default function Matchups(props: IProps): JSX.Element {
         </Grid>
     )
 };
+
+export default memo(Matchups);

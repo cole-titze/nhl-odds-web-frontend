@@ -1,11 +1,11 @@
-import { ITeam, ISeasonStatTotals } from '../../types/types'
+import { ISeasonStatTotals, ITeamSeasonStats } from '../../types/types'
 import { CardActionArea, Card, CardContent } from '@mui/material';
 import TeamRow from './TeamRow';
 import TeamRowHeader from './TeamRowHeader'
 import TeamRowFooter from './TeamRowFooter';
-
+import { Link as RouterLink } from 'react-router-dom'
 interface IProps{
-    teams: ITeam[],
+    teams: ITeamSeasonStats[],
     seasonStatTotals: ISeasonStatTotals
 }
 function TeamList(props: IProps): JSX.Element {
@@ -18,12 +18,12 @@ function TeamList(props: IProps): JSX.Element {
                     <TeamRowHeader />
                 </CardContent>
             </Card>
-            {teams.map(( {id, teamName, locationName, logoUri, vegasLogLoss, modelLogLoss, totalGames, totalAccurateModelGames }) => {
+            {teams.map(( {id, teamName, locationName, logoUri, vegasLogLoss, modelLogLoss, totalGameCount, totalModelAccurateGameCount, totalVegasAccurateGameCount }) => {
                 return (
                     <Card key={id} className="team-list-card">
-                        <CardActionArea>
+                        <CardActionArea component={RouterLink} to={"/team/" + id}>
                         <CardContent>
-                            <TeamRow team={{id, teamName, locationName, logoUri, vegasLogLoss, modelLogLoss, totalGames, totalAccurateModelGames }}/>
+                            <TeamRow team={{id, teamName, locationName, logoUri, vegasLogLoss, modelLogLoss, totalGameCount, totalModelAccurateGameCount, totalVegasAccurateGameCount }}/>
                         </CardContent>
                         </CardActionArea>
                     </Card>

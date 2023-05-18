@@ -1,19 +1,19 @@
 import { Chip, Stack, Typography } from '@mui/material';
 import { ISeasonStatTotals } from '../../types/types';
-import { GetBackgroundColor, GetFontColor } from '../../utils/logLossColorUtils';
+import { GetBackgroundColor, GetFontColor } from '../../utils/get-log-loss-color';
 
 interface IProps{
     seasonStatTotals: ISeasonStatTotals
 }
 
-function TeamRowHeader(props: IProps): JSX.Element {
+function TeamRowFooter(props: IProps): JSX.Element {
     const { seasonStatTotals } = props;
-    const { vegasLogLossTotal, modelLogLossTotal, totalGameCount, totalModelAccurateGameCount } = seasonStatTotals;
+    const { vegasLogLoss, modelLogLoss, totalGameCount, totalModelAccurateGameCount } = seasonStatTotals;
 
-    const logLossDif = (modelLogLossTotal - vegasLogLossTotal);
+    const logLossDif = (modelLogLoss - vegasLogLoss);
     const logLossDifFormatted = logLossDif.toFixed(4);
-    const vegasLogLoss = vegasLogLossTotal.toFixed(4);
-    const modelLogLoss = modelLogLossTotal.toFixed(4);
+    const vegasLogLossFormatted = vegasLogLoss.toFixed(4);
+    const modelLogLossFormatted = modelLogLoss.toFixed(4);
     const fontColor = GetFontColor(logLossDif);
     const backgroundColor = GetBackgroundColor(logLossDif);
 
@@ -28,10 +28,10 @@ function TeamRowHeader(props: IProps): JSX.Element {
                 -
             </Typography>
             <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
-                {modelLogLoss}
+                {modelLogLossFormatted}
             </Typography>
             <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
-                {vegasLogLoss}
+                {vegasLogLossFormatted}
             </Typography>
             <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
                 <Chip style={{color:fontColor, backgroundColor:backgroundColor}} label={logLossDifFormatted}/>
@@ -45,4 +45,4 @@ function TeamRowHeader(props: IProps): JSX.Element {
         </Stack>
     );
 };
-export default TeamRowHeader;
+export default TeamRowFooter;

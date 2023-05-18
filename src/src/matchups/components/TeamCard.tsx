@@ -6,6 +6,7 @@ import { CardActionArea } from '@mui/material';
 import { IMatchupTeam, TEAM } from '../../teams/types/types'
 import {convertDecimalToPercentString, convertDecimalToAmericanString} from '../../teams/utils/odds-utils'
 import Stack from '@mui/material/Stack';
+import { memo } from 'react';
 
 interface IProps{
     team: IMatchupTeam,
@@ -57,4 +58,4 @@ function TeamCard(props: IProps): JSX.Element {
         </CardActionArea>
         </Card>
     )};
-export default TeamCard;
+export default memo(TeamCard);

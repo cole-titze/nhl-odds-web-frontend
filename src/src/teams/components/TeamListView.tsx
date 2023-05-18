@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from "react";
 import ApiService from "../services/ApiService";
 import TeamList from "./TeamTable/TeamList";
-import { ISeasonStatTotals, ITeam } from "../types/types";
+import { ISeasonStatTotals, ITeamsVM, ITeamSeasonStats } from "../types/types";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
+import { GetSeasonStartYear } from "../utils/get-season-start-year";
 
 const TeamListView: React.FC = () => {
-  const defaultSeasonStats: ISeasonStatTotals = { vegasLogLossTotal: 0, modelLogLossTotal: 0, totalGameCount: 0, totalModelAccurateGameCount: 0 }
-  const [year, setYear] = React.useState<Dayjs>();
-  const [teamList, setTeams] = useState<Array<ITeam>>([]);
+  const defaultSeasonStats: ISeasonStatTotals = { vegasLogLoss: 0, modelLogLoss: 0, totalGameCount: 0, totalModelAccurateGameCount: 0, totalVegasAccurateGameCount: 0 }
+  const currentSeasonStartYear = GetSeasonStartYear(dayjs());
+  
+  const [year, setYear] = useState<number>(currentSeasonStartYear);
+  const [teamList, setTeams] = useState<Array<ITeamSeasonStats>>([]);
   const [seasonStats, setStats] = useState<ISeasonStatTotals>(defaultSeasonStats);
 
   const getTeams = (year: number) => {
       ApiService.getAllTeams(year)
       .then((response: any) => {
-        setTeams(response.data.value.teams);
-        setStats(response.data.value.seasonTotals);
+        const teamsVM: ITeamsVM = response.data.value;
+        setTeams(teamsVM.teams);
+        setStats(teamsVM.seasonTotals);
       })
       .catch((e: Error) => {
         console.log(e);
@@ -25,8 +29,15 @@ const TeamListView: React.FC = () => {
   }
   // Get teams
   useEffect(() => {
-    getTeams(year?.year()??2022);
+    getTeams(year);
   }, [year]);
+
+  const onChangeCallback = (newYear: (Dayjs | null)) => {
+    if(newYear === null || newYear.year() === year)
+      return;
+    if(newYear.year() > 2000)
+      setYear(newYear.year());
+  };
 
   return ( 
   <div>
@@ -35,8 +46,8 @@ const TeamListView: React.FC = () => {
         <DatePicker className="input-spacing"
           views={['year']}
           label={"Season Start Year"}
-          value={year}
-          onChange={(newYear: (Dayjs | null)) => {if(newYear && newYear.year() > 2000)setYear(newYear)}}
+          value={dayjs().year(year)}
+          onChange={onChangeCallback}
         />
       </LocalizationProvider>
     <TeamList teams={teamList} seasonStatTotals={seasonStats}/>

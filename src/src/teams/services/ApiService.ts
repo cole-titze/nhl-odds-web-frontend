@@ -1,11 +1,16 @@
 import http from "../../../http-common";
-import {ITeam} from "../types/types"
+import {ITeamSeasonStats, ITeamsVM} from "../types/types"
 
-const getAllTeams = (year: number) => {
-  return http.get<Array<ITeam>>("/Team/GetAllTeams", {params: {seasonStartYear: year}})
+const getAllTeams = (seasonStartYear: number) => {
+  return http.get<ITeamsVM>("/Team/GetAllTeams", {params: {seasonStartYear: seasonStartYear}})
+}
+
+const getTeam = (teamId: number, seasonStartYear: number) => {
+  return http.get<ITeamSeasonStats>("/Team/GetTeam", {params: {teamId: teamId, seasonStartYear: seasonStartYear}})
 }
 
 const ApiService = {
-  getAllTeams
+  getAllTeams,
+  getTeam
 };
 export default ApiService;
