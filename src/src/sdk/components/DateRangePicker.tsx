@@ -2,6 +2,7 @@ import { IDateRange } from "../types/DateRange";
 import BasicDatePicker from "./BasicDatePicker";
 import { memo, useCallback, useEffect, useState } from "react";
 import { Divider, Stack } from "@mui/material";
+import { isDateEqual } from "../utils/compare-dates";
 
 interface IProps{
     defaultDateRange: IDateRange,
@@ -10,19 +11,19 @@ interface IProps{
 function DateRangePicker(props: IProps): JSX.Element {
     const { onChange, defaultDateRange } = props;
     const [dateRange, setDateRange] = useState<IDateRange>(defaultDateRange);
-    console.log(dateRange);
+
     useEffect( () => {
         onChange(dateRange);
     }, [onChange, dateRange]);
 
     const setStartDate = useCallback( (newStartDate: Date) => {
-        if(newStartDate.valueOf() === dateRange.startDate.valueOf())
+        if(isDateEqual(newStartDate, dateRange.startDate))
             return;
         const newDateRange = {startDate: newStartDate, endDate: dateRange.endDate}
         setDateRange(newDateRange);
     }, [dateRange.startDate, dateRange.endDate]);
     const setEndDate = useCallback( (newEndDate: Date) => {
-        if(newEndDate.valueOf() === dateRange.endDate.valueOf())
+        if(isDateEqual(newEndDate, dateRange.endDate))
             return;
         const newDateRange = {startDate: dateRange.startDate, endDate: newEndDate}
         setDateRange(newDateRange);
