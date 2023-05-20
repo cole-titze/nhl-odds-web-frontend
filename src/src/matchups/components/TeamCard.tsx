@@ -25,11 +25,11 @@ function TeamCard(props: IProps): JSX.Element {
     const logo = "team-logos/" + team.logoUri;
 
     return (
-        <Card className="team-card">
+        <Card className="TeamCard">
         <CardActionArea>
         <CardContent>
         <Stack spacing={0} justifyContent="center" alignItems="center">
-            <img className="image"
+            <img className="Image"
             src={logo}
             alt={team.locationName}
             />

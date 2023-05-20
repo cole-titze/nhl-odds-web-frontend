@@ -9,7 +9,7 @@ function AtCard(props: IProps): JSX.Element {
     const { gameDate } = props;
 
     return (
-        <Card className="team-at">
+        <Card className="TeamAt">
         <CardContent>
         <Typography gutterBottom variant="h5" component="div" align="center">
             @

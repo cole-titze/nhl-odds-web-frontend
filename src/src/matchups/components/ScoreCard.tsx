@@ -10,7 +10,7 @@ interface IProps{
 function ScoreCard(props: IProps): JSX.Element {
     const { homeGoals, awayGoals, hasBeenPlayed } = props;
     return (
-        <Card className="team-score">
+        <Card className="TeamScore">
             <CardContent>
                 <Typography variant="h6" component="div" align="center">
                     Score

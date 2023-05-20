@@ -21,11 +21,11 @@ function TeamRow(props: IProps): JSX.Element {
 
     return (
         <Stack spacing={5} direction="row">
-            <Typography className="center-content" sx={{width: 10}} variant="body1" component="div">
+            <Typography className="CenterContent" sx={{width: 10}} variant="body1" component="div">
                 {team.id}
             </Typography>
             <Container sx={{width: 50}} component="div">
-                <img className="team-image"
+                <img className="TeamImage"
                 src={logo}
                 alt={team.locationName}
                 />
@@ -33,19 +33,19 @@ function TeamRow(props: IProps): JSX.Element {
             <Typography sx={{width: 125}} component="div" variant="body1">
                 {team.teamName}
             </Typography>
-            <Typography className="center-content" sx={{width: 150}} component="div" variant="body1">
+            <Typography className="CenterContent" sx={{width: 150}} component="div" variant="body1">
                 {modelLogLoss}
             </Typography>
-            <Typography className="center-content"  sx={{width: 150}} component="div" variant="body1">
+            <Typography className="CenterContent"  sx={{width: 150}} component="div" variant="body1">
                 {vegasLogLoss}
             </Typography>
-            <Container className="center-content" sx={{width: 150}} component="div">
+            <Container className="CenterContent" sx={{width: 150}} component="div">
                 <Chip style={{color:fontColor, backgroundColor:backgroundColor}} label={logLossDifFormatted} />
             </Container>
-            <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
+            <Typography className="CenterContent" sx={{width: 150}} variant="body1" component="div">
                 {totalModelAccurateGameCount}
             </Typography>
-            <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
+            <Typography className="CenterContent" sx={{width: 150}} variant="body1" component="div">
                 {totalGameCount}
             </Typography>
         </Stack>

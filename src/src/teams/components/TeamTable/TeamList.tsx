@@ -13,14 +13,14 @@ function TeamList(props: IProps): JSX.Element {
 
     return (
         <div>
-            <Card className="team-list-card">
+            <Card className="TeamListCard">
                 <CardContent>
                     <TeamRowHeader />
                 </CardContent>
             </Card>
             {teams.map(( {id, teamName, locationName, logoUri, vegasLogLoss, modelLogLoss, totalGameCount, totalModelAccurateGameCount, totalVegasAccurateGameCount }) => {
                 return (
-                    <Card key={id} className="team-list-card">
+                    <Card key={id} className="TeamListCard">
                         <CardActionArea component={RouterLink} to={"/team/" + id}>
                         <CardContent>
                             <TeamRow team={{id, teamName, locationName, logoUri, vegasLogLoss, modelLogLoss, totalGameCount, totalModelAccurateGameCount, totalVegasAccurateGameCount }}/>
@@ -29,7 +29,7 @@ function TeamList(props: IProps): JSX.Element {
                     </Card>
                 );
             })}
-            <Card className="team-list-card">
+            <Card className="TeamListCard">
                 <CardContent>
                     <TeamRowFooter seasonStatTotals={seasonStatTotals}/>
                 </CardContent>

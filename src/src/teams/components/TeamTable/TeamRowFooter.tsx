@@ -19,27 +19,27 @@ function TeamRowFooter(props: IProps): JSX.Element {
 
     return (
         <Stack spacing={5} direction="row">
-            <Typography className="center-content" sx={{width: 10}} variant="body1" component="div">
+            <Typography className="CenterContent" sx={{width: 10}} variant="body1" component="div">
                 Totals
             </Typography>
-            <Typography className="center-content" sx={{width: 50}} variant="body1" component="div">
+            <Typography className="CenterContent" sx={{width: 50}} variant="body1" component="div">
             </Typography>
             <Typography sx={{width: 125}} variant="body1" component="div">
                 -
             </Typography>
-            <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
+            <Typography className="CenterContent" sx={{width: 150}} variant="body1" component="div">
                 {modelLogLossFormatted}
             </Typography>
-            <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
+            <Typography className="CenterContent" sx={{width: 150}} variant="body1" component="div">
                 {vegasLogLossFormatted}
             </Typography>
-            <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
+            <Typography className="CenterContent" sx={{width: 150}} variant="body1" component="div">
                 <Chip style={{color:fontColor, backgroundColor:backgroundColor}} label={logLossDifFormatted}/>
             </Typography>
-            <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
+            <Typography className="CenterContent" sx={{width: 150}} variant="body1" component="div">
                 {(totalModelAccurateGameCount)}
             </Typography>
-            <Typography className="center-content" sx={{width: 150}} variant="body1" component="div">
+            <Typography className="CenterContent" sx={{width: 150}} variant="body1" component="div">
                 {totalGameCount}
             </Typography>
         </Stack>
