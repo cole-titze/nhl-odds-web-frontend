@@ -6,6 +6,8 @@ import { getDefaultDateRange } from "../utils/get-default-date-range";
 import DateRangePicker from "../../sdk/components/DateRangePicker";
 import Matchups from "./Matchups";
 import { isDateRangeEqual } from "../../sdk/utils/compare-dates";
+import Block from "../../sdk/components/Block";
+import { Divider } from "@mui/material";
 
 function MatchupView() {
   const defaultDateRange = useMemo(() => getDefaultDateRange(), []);
@@ -16,7 +18,6 @@ function MatchupView() {
     if(isDateRangeEqual(dateRange, newDateRange))
       return;
     
-    debugger;
     setDateRange(newDateRange);
   }, [dateRange]);
 
@@ -36,8 +37,12 @@ function MatchupView() {
 
   return (
     <div>
-      <h1>Matchups</h1>
-      <DateRangePicker defaultDateRange={dateRange} onChange={updateGameOdds}/>
+      <Block>
+        <h1 className="PageTitle">Matchups</h1>
+        <DateRangePicker defaultDateRange={dateRange} onChange={updateGameOdds}/>
+      </Block>
+      <Divider className="HorizontalDivider" variant="middle"></Divider>
+
       <Matchups matchups={matchupList}/>
     </div>
   );

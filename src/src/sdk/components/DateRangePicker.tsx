@@ -1,7 +1,7 @@
 import { IDateRange } from "../types/DateRange";
 import BasicDatePicker from "./BasicDatePicker";
 import { memo, useCallback, useEffect, useState } from "react";
-import { Divider, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import { isDateEqual } from "../utils/compare-dates";
 
 interface IProps{
@@ -36,8 +36,6 @@ function DateRangePicker(props: IProps): JSX.Element {
                 <span>to</span>
                 <BasicDatePicker label="End Date" defaultDate={dateRange.endDate} onChange={setEndDate}/>
             </Stack>
-            <br></br>
-            <Divider variant="middle"></Divider>
         </span>
     )};
 export default memo(DateRangePicker);

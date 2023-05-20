@@ -7,6 +7,8 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from "dayjs";
 import { GetSeasonStartYear } from "../utils/get-season-start-year";
+import Block from "../../sdk/components/Block";
+import { Divider } from "@mui/material";
 
 const TeamListView: React.FC = () => {
   const defaultSeasonStats: ISeasonStatTotals = { vegasLogLoss: 0, modelLogLoss: 0, totalGameCount: 0, totalModelAccurateGameCount: 0, totalVegasAccurateGameCount: 0 }
@@ -41,15 +43,18 @@ const TeamListView: React.FC = () => {
 
   return ( 
   <div>
-    <h1>Teams</h1>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker className="input-spacing"
-          views={['year']}
-          label={"Season Start Year"}
-          value={dayjs().year(year)}
-          onChange={onChangeCallback}
-        />
-      </LocalizationProvider>
+    <Block>
+      <h1 className="PageTitle">Teams</h1>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker className="input-spacing"
+            views={['year']}
+            label={"Season Start Year"}
+            value={dayjs().year(year)}
+            onChange={onChangeCallback}
+          />
+        </LocalizationProvider>
+    </Block>
+    <Divider className="HorizontalDivider" variant="middle"></Divider>
     <TeamList teams={teamList} seasonStatTotals={seasonStats}/>
   </div>
 );};

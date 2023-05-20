@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import Team from "./Team";
 import Block from "../../sdk/components/Block";
 import { GetSeasonStartYear } from "../utils/get-season-start-year";
+import { Divider } from "@mui/material";
 
 const TeamView: React.FC = () => {
   const { teamId: teamIdStr } = useParams();
@@ -54,9 +55,9 @@ const TeamView: React.FC = () => {
   return (
     <>
       <Block>
-        <h1>{team.locationName + " " + team.teamName}</h1>
+        <h1 className="PageTitle">{team.locationName + " " + team.teamName}</h1>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker className="input-spacing DatePicker"
+            <DatePicker className="input-spacing"
               views={['year']}
               label={"Season Start Year"}
               value={dayjs().year(year)}
@@ -64,6 +65,7 @@ const TeamView: React.FC = () => {
             />
           </LocalizationProvider>
       </Block>
+      <Divider className="HorizontalDivider" variant="middle"></Divider>
       <Block>
         <Team team={team} year={year}/>
       </Block>
