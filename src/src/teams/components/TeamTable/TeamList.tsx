@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import { ISeasonStatTotals, ITeamSeasonStats } from '../../types/types'
 import { CardActionArea, Card, CardContent } from '@mui/material';
 import TeamRow from './TeamRow';
@@ -8,7 +9,7 @@ interface IProps{
     teams: ITeamSeasonStats[],
     seasonStatTotals: ISeasonStatTotals
 }
-function TeamList(props: IProps): JSX.Element {
+function TeamList(props: IProps) {
     const { teams, seasonStatTotals } = props;
 
     return (
@@ -36,4 +37,4 @@ function TeamList(props: IProps): JSX.Element {
             </Card>
         </div>);
 };
-export default TeamList;
+export default memo(TeamList);

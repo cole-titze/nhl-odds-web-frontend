@@ -1,6 +1,6 @@
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { IDateRange } from "../types/DateRange";
 import BasicDatePicker from "./BasicDatePicker";
-import { memo, useCallback, useEffect, useState } from "react";
 import { Stack } from "@mui/material";
 import { isDateEqual } from "../utils/compare-dates";
 
@@ -8,7 +8,7 @@ interface IProps{
     defaultDateRange: IDateRange,
     onChange: (defaultDateRange: IDateRange) => void
 }
-function DateRangePicker(props: IProps): JSX.Element {
+function DateRangePicker(props: IProps) {
     const { onChange, defaultDateRange } = props;
     const [dateRange, setDateRange] = useState<IDateRange>(defaultDateRange);
 

@@ -1,6 +1,7 @@
+import React, { memo } from 'react';
 import { Stack, Typography } from '@mui/material';
 
-function TeamRowHeader(): JSX.Element {
+function TeamRowHeader() {
     return (
         <Stack spacing={5} direction="row">
             <Typography className="CenterContent" sx={{width: 10}} variant="body1" component="div">
@@ -30,4 +31,4 @@ function TeamRowHeader(): JSX.Element {
         </Stack>
     );
 };
-export default TeamRowHeader;
+export default memo(TeamRowHeader);

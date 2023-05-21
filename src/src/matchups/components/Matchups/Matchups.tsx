@@ -1,14 +1,14 @@
+import React, { memo } from 'react';
 import { IGameOdds } from '../../types/types'
 import { Grid } from '@mui/material';
 import TeamCard from './TeamCard';
 import AtCard from './AtCard';
 import ScoreCard from './ScoreCard';
-import { memo } from 'react';
 
 interface IProps{
     matchups: IGameOdds[]
 }
-function Matchups(props: IProps): JSX.Element {
+function Matchups(props: IProps) {
     const { matchups } = props;
 
     return (

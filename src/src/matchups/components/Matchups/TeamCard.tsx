@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -6,19 +7,11 @@ import { CardActionArea } from '@mui/material';
 import { IMatchupTeam, TEAM } from '../../../teams/types/types'
 import {convertDecimalToPercentString, convertDecimalToAmericanString} from '../../../teams/utils/odds-utils'
 import Stack from '@mui/material/Stack';
-import { memo } from 'react';
 
 interface IProps{
     team: IMatchupTeam,
     hasBeenPlayed: boolean,
     winner: TEAM
-}
-function getTag(hasBeenPlayed: boolean, winner: TEAM, team: TEAM){
-    if(!hasBeenPlayed)
-        return;
-    if(winner===team)
-        return (<Chip label="Winner" color="success" size="small"/>);
-    return (<Chip label="Loser" color="error" size="small"/>);
 }
 function TeamCard(props: IProps): JSX.Element {
     const { team, hasBeenPlayed, winner } = props;
@@ -57,5 +50,15 @@ function TeamCard(props: IProps): JSX.Element {
         </CardContent>
         </CardActionArea>
         </Card>
-    )};
+    );
+};
+
+function getTag(hasBeenPlayed: boolean, winner: TEAM, team: TEAM){
+    if(!hasBeenPlayed)
+        return;
+    if(winner===team)
+        return (<Chip label="Winner" color="success" size="small"/>);
+    return (<Chip label="Loser" color="error" size="small"/>);
+}
+
 export default memo(TeamCard);

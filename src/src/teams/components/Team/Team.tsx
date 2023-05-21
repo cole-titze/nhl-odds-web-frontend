@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import { ITeamSeasonStats } from '../../types/types'
 import { Stack, Typography, Container, Chip } from '@mui/material';
 import { GetBackgroundColor, GetFontColor } from '../../utils/get-log-loss-color';
@@ -6,7 +7,7 @@ interface IProps{
     team: ITeamSeasonStats,
     year: number
 }
-function TeamRow(props: IProps): JSX.Element {
+function TeamRow(props: IProps) {
     const { team } = props;
     const logLossDif = (team.modelLogLoss - team.vegasLogLoss);
     const logLossDifFormatted = logLossDif.toFixed(4);
@@ -52,4 +53,4 @@ function TeamRow(props: IProps): JSX.Element {
         </Stack>
     );
 };
-export default TeamRow;
+export default memo(TeamRow);

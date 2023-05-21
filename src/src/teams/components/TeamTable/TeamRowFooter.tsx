@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import { Chip, Stack, Typography } from '@mui/material';
 import { ISeasonStatTotals } from '../../types/types';
 import { GetBackgroundColor, GetFontColor } from '../../utils/get-log-loss-color';
@@ -6,7 +7,7 @@ interface IProps{
     seasonStatTotals: ISeasonStatTotals
 }
 
-function TeamRowFooter(props: IProps): JSX.Element {
+function TeamRowFooter(props: IProps) {
     const { seasonStatTotals } = props;
     const { vegasLogLoss, modelLogLoss, totalGameCount, totalModelAccurateGameCount } = seasonStatTotals;
 
@@ -45,4 +46,4 @@ function TeamRowFooter(props: IProps): JSX.Element {
         </Stack>
     );
 };
-export default TeamRowFooter;
+export default memo(TeamRowFooter);

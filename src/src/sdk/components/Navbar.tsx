@@ -1,7 +1,8 @@
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import "../../../styles/index";
 
-export default function Navbar() {
+function Navbar() {
     return (
         <nav data-testid="navbar" className="Navbar navbar navbar-expand navbar-dark bg-dark header">
         <a href="/odds" className="navbar-brand">
@@ -22,3 +23,5 @@ export default function Navbar() {
       </nav>
     );
 }
+
+export default memo(Navbar);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import ApiService from "../services/ApiService";
 import TeamList from "./TeamTable/TeamList";
 import { ISeasonStatTotals, ITeamsVM, ITeamSeasonStats } from "../types/types";
@@ -6,7 +6,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { GetSeasonStartYear } from "../utils/get-season-start-year";
 import TeamHeader from "./Team/TeamHeader";
 
-const TeamListView: React.FC = () => {
+function TeamListView() {
   const defaultSeasonStats: ISeasonStatTotals = { vegasLogLoss: 0, modelLogLoss: 0, totalGameCount: 0, totalModelAccurateGameCount: 0, totalVegasAccurateGameCount: 0 }
   const currentSeasonStartYear = GetSeasonStartYear(dayjs());
   
@@ -38,9 +38,11 @@ const TeamListView: React.FC = () => {
   };
 
   return ( 
-  <div>
-    <TeamHeader header="Teams" year={year} onDateChange={onChangeCallback} />
-    <TeamList teams={teamList} seasonStatTotals={seasonStats}/>
-  </div>
-);};
-export default TeamListView;
+    <div>
+      <TeamHeader header="Teams" year={year} onDateChange={onChangeCallback} />
+      <TeamList teams={teamList} seasonStatTotals={seasonStats}/>
+    </div>
+  );
+};
+
+export default memo(TeamListView);

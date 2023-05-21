@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -7,7 +8,7 @@ interface IProps{
     awayGoals: number,
     hasBeenPlayed: boolean
 }
-function ScoreCard(props: IProps): JSX.Element {
+function ScoreCard(props: IProps) {
     const { homeGoals, awayGoals, hasBeenPlayed } = props;
     return (
         <Card className="TeamScore">
@@ -21,4 +22,4 @@ function ScoreCard(props: IProps): JSX.Element {
             </CardContent>
         </Card>
     )};
-export default ScoreCard;
+export default memo(ScoreCard);

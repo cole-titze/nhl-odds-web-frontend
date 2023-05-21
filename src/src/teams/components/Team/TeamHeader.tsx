@@ -12,7 +12,7 @@ interface IProps{
     onDateChange:  (newYear: (Dayjs | null)) => void
 }
 
-function TeamHeader(props: IProps): JSX.Element {
+function TeamHeader(props: IProps) {
   const { header, year, onDateChange } = props; 
   return (
     <>

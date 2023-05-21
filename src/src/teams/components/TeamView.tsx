@@ -8,7 +8,7 @@ import Block from "../../sdk/components/Block";
 import { GetSeasonStartYear } from "../utils/get-season-start-year";
 import TeamHeader from "./Team/TeamHeader";
 
-const TeamView: React.FC = () => {
+function TeamView() {
   const { teamId: teamIdStr } = useParams();
   const teamId: number = teamIdStr !== undefined ? parseInt(teamIdStr, 10) : 0;
   const defaultTeam: ITeamSeasonStats = {

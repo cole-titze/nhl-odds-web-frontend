@@ -3,11 +3,9 @@ import ApiService from "../services/ApiService";
 import {IDateRange} from "../../sdk/types/DateRange";
 import {IGameOdds} from "../types/types";
 import { getDefaultDateRange } from "../utils/get-default-date-range";
-import DateRangePicker from "../../sdk/components/DateRangePicker";
 import Matchups from "./Matchups/Matchups";
 import { isDateRangeEqual } from "../../sdk/utils/compare-dates";
-import Block from "../../sdk/components/Block";
-import { Divider } from "@mui/material";
+import MatchupHeader from "./Matchups/MatchupHeader";
 
 function MatchupView() {
   const defaultDateRange = useMemo(() => getDefaultDateRange(), []);
@@ -37,12 +35,7 @@ function MatchupView() {
 
   return (
     <div>
-      <Block>
-        <h1 className="PageTitle">Matchups</h1>
-        <DateRangePicker defaultDateRange={dateRange} onChange={updateGameOdds}/>
-      </Block>
-      <Divider className="HorizontalDivider" variant="middle"></Divider>
-
+      <MatchupHeader header="Matchups" defaultDateRange={defaultDateRange} onDateChange={updateGameOdds} />
       <Matchups matchups={matchupList}/>
     </div>
   );
