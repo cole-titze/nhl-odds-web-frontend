@@ -1,15 +1,12 @@
 import React, { useState, useEffect, memo } from "react";
 import ApiService from "../services/ApiService";
 import { ITeamSeasonStats } from "../types/types";
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from "dayjs";
 import { useParams } from "react-router-dom";
-import Team from "./Team";
+import Team from "./Team/Team";
 import Block from "../../sdk/components/Block";
 import { GetSeasonStartYear } from "../utils/get-season-start-year";
-import { Divider } from "@mui/material";
+import TeamHeader from "./Team/TeamHeader";
 
 const TeamView: React.FC = () => {
   const { teamId: teamIdStr } = useParams();
@@ -26,9 +23,11 @@ const TeamView: React.FC = () => {
     totalVegasAccurateGameCount: 0
   };
   const currentSeasonStartYear = GetSeasonStartYear(dayjs());
-  
+
   const [year, setYear] = useState<number>(currentSeasonStartYear);
   const [team, setTeam] = useState<ITeamSeasonStats>(defaultTeam);
+
+  const header = team.locationName + " " + team.teamName;
 
   const getTeam = (teamId: number, year: number) => {
       ApiService.getTeam(teamId, year)
@@ -54,18 +53,7 @@ const TeamView: React.FC = () => {
 
   return (
     <>
-      <Block>
-        <h1 className="PageTitle">{team.locationName + " " + team.teamName}</h1>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker className="input-spacing"
-              views={['year']}
-              label={"Season Start Year"}
-              value={dayjs().year(year)}
-              onChange={onChangeCallback}
-            />
-          </LocalizationProvider>
-      </Block>
-      <Divider className="HorizontalDivider" variant="middle"></Divider>
+      <TeamHeader header={header} year={year} onDateChange={onChangeCallback}/>
       <Block>
         <Team team={team} year={year}/>
       </Block>

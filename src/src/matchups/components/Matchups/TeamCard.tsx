@@ -3,8 +3,8 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import { CardActionArea } from '@mui/material';
-import { IMatchupTeam, TEAM } from '../../teams/types/types'
-import {convertDecimalToPercentString, convertDecimalToAmericanString} from '../../teams/utils/odds-utils'
+import { IMatchupTeam, TEAM } from '../../../teams/types/types'
+import {convertDecimalToPercentString, convertDecimalToAmericanString} from '../../../teams/utils/odds-utils'
 import Stack from '@mui/material/Stack';
 import { memo } from 'react';
 

@@ -1,4 +1,4 @@
-import { IGameOdds } from '../types/types'
+import { IGameOdds } from '../../types/types'
 import { Grid } from '@mui/material';
 import TeamCard from './TeamCard';
 import AtCard from './AtCard';

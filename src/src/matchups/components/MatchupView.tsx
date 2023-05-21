@@ -4,7 +4,7 @@ import {IDateRange} from "../../sdk/types/DateRange";
 import {IGameOdds} from "../types/types";
 import { getDefaultDateRange } from "../utils/get-default-date-range";
 import DateRangePicker from "../../sdk/components/DateRangePicker";
-import Matchups from "./Matchups";
+import Matchups from "./Matchups/Matchups";
 import { isDateRangeEqual } from "../../sdk/utils/compare-dates";
 import Block from "../../sdk/components/Block";
 import { Divider } from "@mui/material";

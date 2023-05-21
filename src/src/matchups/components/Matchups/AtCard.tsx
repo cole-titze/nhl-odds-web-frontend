@@ -1,11 +1,14 @@
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import convertToLocalTime from '../utils/convert-to-local-time'
+import { memo } from 'react';
+import convertToLocalTime from '../../utils/convert-to-local-time'
+
 interface IProps{
     gameDate: Date
 }
-function AtCard(props: IProps): JSX.Element {
+function AtCard(props: IProps): React.JSX.Element {
     const { gameDate } = props;
 
     return (
@@ -20,4 +23,4 @@ function AtCard(props: IProps): JSX.Element {
         </CardContent>
         </Card>
     )};
-export default AtCard;
+export default memo(AtCard);
