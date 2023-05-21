@@ -20,7 +20,7 @@ function TeamView() {
     modelLogLoss: 0,
     totalGameCount: 0,
     totalModelAccurateGameCount: 0,
-    totalVegasAccurateGameCount: 0
+    totalVegasAccurateGameCount: 0,
   };
   const currentSeasonStartYear = GetSeasonStartYear(dayjs());
 
@@ -30,34 +30,32 @@ function TeamView() {
   const header = team.locationName + " " + team.teamName;
 
   const getTeam = (teamId: number, year: number) => {
-      ApiService.getTeam(teamId, year)
-      .then((response: any) => {
-        const teamVM: ITeamSeasonStats = response.data.value;
+    ApiService.getTeam(teamId, year)
+      .then((response) => {
+        const teamVM: ITeamSeasonStats = response.data;
         setTeam(teamVM);
       })
       .catch((e: Error) => {
         console.log(e);
       });
-  }
+  };
   // Get team
   useEffect(() => {
     getTeam(teamId, year);
   }, [teamId, year]);
 
-  const onChangeCallback = (newYear: (Dayjs | null)) => {
-    if(newYear === null || newYear.year() === year)
-      return;
-    if(newYear.year() > 2000)
-      setYear(newYear.year());
+  const onChangeCallback = (newYear: Dayjs | null) => {
+    if (newYear === null || newYear.year() === year) return;
+    if (newYear.year() > 2000) setYear(newYear.year());
   };
 
   return (
     <>
-      <TeamHeader header={header} year={year} onDateChange={onChangeCallback}/>
+      <TeamHeader header={header} year={year} onDateChange={onChangeCallback} />
       <Block>
-        <Team team={team} year={year}/>
+        <Team team={team} year={year} />
       </Block>
     </>
   );
-};
+}
 export default memo(TeamView);

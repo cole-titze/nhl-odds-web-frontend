@@ -7,4 +7,5 @@
 [![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/cole-titze/nhl-odds-web-frontend?label=Dependencies)](https://libraries.io/github/cole-titze/nhl-odds-web-frontend)
 
 # [nhl-odds-web-frontend](https://github.com/cole-titze/nhl-odds-web-frontend/wiki/Nhl-Odds-Web-Frontend)
+
 Frontend SPA for displaying nhl odds.

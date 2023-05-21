@@ -1,9 +1,9 @@
 .Image {
-    max-width:200px;
-    max-height:100px;
-    margin: auto;
-  }
+  max-width: 200px;
+  max-height: 100px;
+  margin: auto;
+}
 
-.TeamCard{
-    height: 100%;
+.TeamCard {
+  height: 100%;
 }
