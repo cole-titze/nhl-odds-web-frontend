@@ -24,7 +24,7 @@ function MatchupView() {
   const getGameOdds = (dateRange: IDateRange) => {
     ApiService.getPredictedGamesInDateRange(dateRange)
       .then((response) => {
-        setMatchups(response);
+        setMatchups(response.data.value);
       })
       .catch((e: Error) => {
         console.log(e);

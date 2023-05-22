@@ -24,7 +24,7 @@ function TeamListView() {
   const getTeams = (year: number) => {
     ApiService.getAllTeams(year)
       .then((response) => {
-        const teamsVM: ITeamsVM = response.data;
+        const teamsVM: ITeamsVM = response.data.value;
         setTeams(teamsVM.teams);
         setStats(teamsVM.seasonTotals);
       })

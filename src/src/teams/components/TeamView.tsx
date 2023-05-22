@@ -32,7 +32,7 @@ function TeamView() {
   const getTeam = (teamId: number, year: number) => {
     ApiService.getTeam(teamId, year)
       .then((response) => {
-        const teamVM: ITeamSeasonStats = response.data;
+        const teamVM: ITeamSeasonStats = response.data.value;
         setTeam(teamVM);
       })
       .catch((e: Error) => {
