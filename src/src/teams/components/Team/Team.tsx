@@ -5,6 +5,7 @@ import {
   GetBackgroundColor,
   GetFontColor,
 } from "../../utils/get-log-loss-color";
+import Block from "../../../sdk/components/Block";
 
 interface IProps {
   team: ITeamSeasonStats;
@@ -16,7 +17,6 @@ function Team(props: IProps) {
   const logLossDifFormatted = logLossDif.toFixed(4);
   const vegasLogLossFormatted = team.vegasLogLoss.toFixed(4);
   const modelLogLossFormatted = team.modelLogLoss.toFixed(4);
-  const totalGameCount = team.totalGameCount;
   const fontColor = GetFontColor(logLossDif);
   const backgroundColor = GetBackgroundColor(logLossDif);
 
@@ -24,22 +24,24 @@ function Team(props: IProps) {
 
   return (
     <Card className="Team">
-      <CardContent>
-        <img className="TeamImage" src={logo} alt={team.locationName} />
-        <Typography>
-          {team.seasonWins + "W " + team.seasonLosses + "L"}
-        </Typography>
+      <CardContent className="Team">
+        <Block>
+          <img className="TeamBioImage" src={logo} alt={team.locationName} />
+          <Typography className="TeamBioCardHeaderText">
+            {team.seasonWins + "W " + team.seasonLosses + "L"}
+          </Typography>
+        </Block>
         <Typography>{"Model Log Loss: " + modelLogLossFormatted}</Typography>
         <Typography>{"Vegas Log Loss: " + vegasLogLossFormatted}</Typography>
         <Typography component={"span"}>{"Difference: "}</Typography>
         <Chip
+          sx={{ height: "1rem" }}
           style={{
             color: fontColor,
             backgroundColor: backgroundColor,
           }}
           label={logLossDifFormatted}
         />
-        <Typography>{"Total Games Played: " + totalGameCount}</Typography>
       </CardContent>
     </Card>
   );
