@@ -1,10 +1,10 @@
 import React, { useState, useEffect, memo } from "react";
 import ApiService from "../services/ApiService";
-import TeamList from "./TeamTable/TeamList";
 import { ISeasonStatTotals, ITeamsVM, ITeamSeasonStats } from "../types/types";
 import dayjs, { Dayjs } from "dayjs";
 import { GetSeasonStartYear } from "../utils/get-season-start-year";
 import TeamHeader from "./Team/TeamHeader";
+import TeamTable from "./TeamTable/TeamTable";
 
 function TeamListView() {
   const defaultSeasonStats: ISeasonStatTotals = {
@@ -45,7 +45,7 @@ function TeamListView() {
   return (
     <div>
       <TeamHeader header="Teams" year={year} onDateChange={onChangeCallback} />
-      <TeamList teams={teamList} seasonStatTotals={seasonStats} />
+      <TeamTable teams={teamList} seasonStatTotals={seasonStats} />
     </div>
   );
 }

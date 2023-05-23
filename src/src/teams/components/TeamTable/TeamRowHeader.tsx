@@ -1,69 +1,20 @@
 import React, { memo } from "react";
-import { Stack, Typography } from "@mui/material";
+import { TableCell, TableHead, TableRow } from "@mui/material";
 
 function TeamRowHeader() {
   return (
-    <Stack spacing={5} direction="row">
-      <Typography
-        className="CenterContent"
-        sx={{ width: 10 }}
-        variant="body1"
-        component="div"
-      >
-        Id
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 50 }}
-        variant="body1"
-        component="div"
-      >
-        Logo
-      </Typography>
-      <Typography sx={{ width: 125 }} variant="body1" component="div">
-        Team Name
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        Model Log Loss
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        Vegas Log Loss
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        Difference
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        Correct Count
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        Games Played
-      </Typography>
-    </Stack>
+    <TableHead>
+      <TableRow>
+        <TableCell align="center">Id</TableCell>
+        <TableCell align="center">Logo</TableCell>
+        <TableCell align="center">Team Name</TableCell>
+        <TableCell align="center">Model Log Loss</TableCell>
+        <TableCell align="center">Vegas Log Loss</TableCell>
+        <TableCell align="center">Difference</TableCell>
+        <TableCell align="center">Correct Count</TableCell>
+        <TableCell align="center">Games Played</TableCell>
+      </TableRow>
+    </TableHead>
   );
 }
 export default memo(TeamRowHeader);

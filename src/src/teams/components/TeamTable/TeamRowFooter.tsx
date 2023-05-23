@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Chip, Stack, Typography } from "@mui/material";
+import { Chip, TableCell, TableFooter, TableRow } from "@mui/material";
 import { ISeasonStatTotals } from "../../types/types";
 import {
   GetBackgroundColor,
@@ -27,68 +27,26 @@ function TeamRowFooter(props: IProps) {
   const backgroundColor = GetBackgroundColor(logLossDif);
 
   return (
-    <Stack spacing={5} direction="row">
-      <Typography
-        className="CenterContent"
-        sx={{ width: 10 }}
-        variant="body1"
-        component="div"
-      >
-        Totals
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 50 }}
-        variant="body1"
-        component="div"
-      ></Typography>
-      <Typography sx={{ width: 125 }} variant="body1" component="div">
-        -
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        {modelLogLossFormatted}
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        {vegasLogLossFormatted}
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        <Chip
-          style={{ color: fontColor, backgroundColor: backgroundColor }}
-          label={logLossDifFormatted}
-        />
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        {totalModelAccurateGameCount}
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        {totalGameCount}
-      </Typography>
-    </Stack>
+    <TableFooter>
+      <TableRow>
+        <TableCell align="center">Totals</TableCell>
+        <TableCell align="center">-</TableCell>
+        <TableCell align="center"></TableCell>
+        <TableCell align="center">{modelLogLossFormatted}</TableCell>
+        <TableCell align="center">{vegasLogLossFormatted}</TableCell>
+        <TableCell align="center">
+          <Chip
+            style={{
+              color: fontColor,
+              backgroundColor: backgroundColor,
+            }}
+            label={logLossDifFormatted}
+          />
+        </TableCell>
+        <TableCell align="center">{totalModelAccurateGameCount}</TableCell>
+        <TableCell align="center">{totalGameCount}</TableCell>
+      </TableRow>
+    </TableFooter>
   );
 }
 export default memo(TeamRowFooter);

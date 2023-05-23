@@ -10,3 +10,8 @@
   max-width: 40px;
   max-height: 25px;
 }
+
+.TeamRow:hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}

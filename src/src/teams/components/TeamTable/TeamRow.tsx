@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { ITeamSeasonStats } from "../../types/types";
-import { Stack, Typography, Container, Chip } from "@mui/material";
+import { TableRow, TableCell, Chip } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import {
   GetBackgroundColor,
   GetFontColor,
@@ -11,72 +12,57 @@ interface IProps {
 }
 function TeamRow(props: IProps) {
   const { team } = props;
-  const logLossDif = team.modelLogLoss - team.vegasLogLoss;
+  const {
+    id,
+    teamName,
+    vegasLogLoss,
+    modelLogLoss,
+    totalGameCount,
+    totalModelAccurateGameCount,
+    logoUri,
+    locationName,
+  } = team;
+  const logLossDif = modelLogLoss - vegasLogLoss;
   const logLossDifFormatted = logLossDif.toFixed(4);
-  const vegasLogLoss = team.vegasLogLoss.toFixed(4);
-  const modelLogLoss = team.modelLogLoss.toFixed(4);
-  const totalGameCount = team.totalGameCount;
-  const totalModelAccurateGameCount = team.totalModelAccurateGameCount;
+  const vegasLogLossFormatted = team.vegasLogLoss.toFixed(4);
+  const modelLogLossFormatted = team.modelLogLoss.toFixed(4);
   const fontColor = GetFontColor(logLossDif);
   const backgroundColor = GetBackgroundColor(logLossDif);
 
-  const logo = "team-logos/" + team.logoUri;
+  const logo = "team-logos/" + logoUri;
+
+  const navigate = useNavigate();
+  const handleRowClick = (id: number) => {
+    navigate(`/team/${id}`);
+  };
 
   return (
-    <Stack spacing={5} direction="row">
-      <Typography
-        className="CenterContent"
-        sx={{ width: 10 }}
-        variant="body1"
-        component="div"
-      >
-        {team.id}
-      </Typography>
-      <Container sx={{ width: 50 }} component="div">
-        <img className="TeamImage" src={logo} alt={team.locationName} />
-      </Container>
-      <Typography sx={{ width: 125 }} component="div" variant="body1">
-        {team.teamName}
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        component="div"
-        variant="body1"
-      >
-        {modelLogLoss}
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        component="div"
-        variant="body1"
-      >
-        {vegasLogLoss}
-      </Typography>
-      <Container className="CenterContent" sx={{ width: 150 }} component="div">
+    <TableRow
+      onClick={() => handleRowClick(id)}
+      className="TeamRow"
+      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+    >
+      <TableCell align="center" component="th" scope="row">
+        {id}
+      </TableCell>
+      <TableCell align="center">
+        <img className="TeamImage" src={logo} alt={locationName} />
+      </TableCell>
+      <TableCell align="center">{teamName}</TableCell>
+      <TableCell align="center">{modelLogLossFormatted}</TableCell>
+      <TableCell align="center">{vegasLogLossFormatted}</TableCell>
+      <TableCell align="center">
         <Chip
-          style={{ color: fontColor, backgroundColor: backgroundColor }}
+          style={{
+            color: fontColor,
+            backgroundColor: backgroundColor,
+          }}
           label={logLossDifFormatted}
         />
-      </Container>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        {totalModelAccurateGameCount}
-      </Typography>
-      <Typography
-        className="CenterContent"
-        sx={{ width: 150 }}
-        variant="body1"
-        component="div"
-      >
-        {totalGameCount}
-      </Typography>
-    </Stack>
+      </TableCell>
+      <TableCell align="center">{totalModelAccurateGameCount}</TableCell>
+      <TableCell align="center">{totalGameCount}</TableCell>
+    </TableRow>
   );
 }
 export default memo(TeamRow);
