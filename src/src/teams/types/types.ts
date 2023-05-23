@@ -41,4 +41,6 @@ export interface ISeasonStatTotals {
   totalGameCount: number;
   totalModelAccurateGameCount: number;
   totalVegasAccurateGameCount: number;
+  seasonWins: number;
+  seasonLosses: number;
 }

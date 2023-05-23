@@ -46,7 +46,7 @@ function TeamRow(props: IProps) {
         {id}
       </TableCell>
       <TableCell align="center">
-        <img className="TeamImage" src={logo} alt={locationName} />
+        <img className="TeamListImage" src={logo} alt={locationName} />
       </TableCell>
       <TableCell align="center">{teamName}</TableCell>
       <TableCell align="center">{modelLogLossFormatted}</TableCell>

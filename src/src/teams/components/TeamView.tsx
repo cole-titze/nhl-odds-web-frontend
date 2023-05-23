@@ -21,6 +21,8 @@ function TeamView() {
     totalGameCount: 0,
     totalModelAccurateGameCount: 0,
     totalVegasAccurateGameCount: 0,
+    seasonWins: 0,
+    seasonLosses: 0,
   };
   const currentSeasonStartYear = GetSeasonStartYear(dayjs());
 
