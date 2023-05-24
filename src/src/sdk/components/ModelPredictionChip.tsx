@@ -13,7 +13,9 @@ function Team(props: IProps) {
   const label = matchup.homeTeam.modelOdds > 0.5 ? "Home" : "Away";
 
   let backgroundColor = "";
-  if (
+  if (!matchup.hasBeenPlayed) {
+    backgroundColor = "";
+  } else if (
     (matchup.winner == TEAM.home && matchup.homeTeam.modelOdds > 0.5) ||
     (matchup.winner == TEAM.away && matchup.awayTeam.modelOdds > 0.5)
   ) {
