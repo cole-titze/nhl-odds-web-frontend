@@ -10,6 +10,7 @@ import {
   convertDecimalToAmericanString,
 } from "../../../teams/utils/odds-utils";
 import Stack from "@mui/material/Stack";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   team: IMatchupTeam;
@@ -20,9 +21,14 @@ function TeamCard(props: IProps): JSX.Element {
   const { team, hasBeenPlayed, winner } = props;
   const logo = "team-logos/" + team.logoUri;
 
+  const navigate = useNavigate();
+  const handleClick = (id: number) => {
+    navigate(`/team/${id}`);
+  };
+
   return (
     <Card className="TeamCard">
-      <CardActionArea>
+      <CardActionArea onClick={() => handleClick(team.id)}>
         <CardContent>
           <Stack spacing={0} justifyContent="center" alignItems="center">
             <img className="Image" src={logo} alt={team.locationName} />
