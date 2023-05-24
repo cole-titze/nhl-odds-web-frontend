@@ -15,6 +15,7 @@ function TeamListView() {
     totalVegasAccurateGameCount: 0,
     seasonLosses: 0,
     seasonWins: 0,
+    gameOddsVM: [],
   };
   const currentSeasonStartYear = GetSeasonStartYear(dayjs());
 

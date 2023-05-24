@@ -7,6 +7,7 @@ import Team from "./Team/Team";
 import Block from "../../sdk/components/Block";
 import { GetSeasonStartYear } from "../utils/get-season-start-year";
 import TeamHeader from "./Team/TeamHeader";
+import MatchupTable from "../../matchups/components/Matchups/MatchupTable";
 
 function TeamView() {
   const { teamId: teamIdStr } = useParams();
@@ -23,6 +24,7 @@ function TeamView() {
     totalVegasAccurateGameCount: 0,
     seasonWins: 0,
     seasonLosses: 0,
+    gameOddsVM: [],
   };
   const currentSeasonStartYear = GetSeasonStartYear(dayjs());
 
@@ -56,6 +58,7 @@ function TeamView() {
       <TeamHeader header={header} year={year} onDateChange={onChangeCallback} />
       <Block>
         <Team team={team} year={year} />
+        <MatchupTable matchups={team.gameOddsVM} />
       </Block>
     </>
   );

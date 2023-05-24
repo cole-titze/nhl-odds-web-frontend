@@ -20,11 +20,11 @@ function TeamHeader(props: IProps) {
         <h1 className="PageTitle">{header}</h1>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
-            className="input-spacing"
             views={["year"]}
             label={"Season Start Year"}
             value={dayjs().year(year)}
             onChange={onDateChange}
+            sx={{ backgroundColor: "white" }}
           />
         </LocalizationProvider>
       </Block>

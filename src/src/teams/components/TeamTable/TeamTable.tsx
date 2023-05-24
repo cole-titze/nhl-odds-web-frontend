@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { memo } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
@@ -12,7 +12,7 @@ interface IProps {
   teams: ITeamSeasonStats[];
   seasonStatTotals: ISeasonStatTotals;
 }
-export default function BasicTable(props: IProps) {
+function TeamTable(props: IProps) {
   const { teams, seasonStatTotals } = props;
 
   return (
@@ -29,3 +29,5 @@ export default function BasicTable(props: IProps) {
     </TableContainer>
   );
 }
+
+export default memo(TeamTable);

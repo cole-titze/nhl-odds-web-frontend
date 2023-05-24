@@ -43,4 +43,5 @@ export interface ISeasonStatTotals {
   totalVegasAccurateGameCount: number;
   seasonWins: number;
   seasonLosses: number;
+  gameOddsVM: IGameOdds[];
 }
