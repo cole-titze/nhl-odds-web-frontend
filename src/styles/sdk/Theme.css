@@ -1,0 +1,4 @@
+.Theme:not(#specificity) {
+  background: var(--deep-color-background);
+  color: var(--color-foreground);
+}

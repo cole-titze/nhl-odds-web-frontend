@@ -11,12 +11,12 @@ function AtCard(props: IProps) {
   const { gameDate } = props;
 
   return (
-    <Card className="TeamAt">
+    <Card className="TeamAt Theme">
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" align="center">
           @
         </Typography>
-        <Typography variant="body2" color="text.secondary" align="center">
+        <Typography className="Theme" variant="body2" align="center">
           {convertToLocalTime(gameDate)}
         </Typography>
       </CardContent>

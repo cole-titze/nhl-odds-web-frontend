@@ -1,12 +1,17 @@
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import "../../../styles/index";
+import DarkModeToggle from "./DarkModeToggle";
 
-function Navbar() {
+interface IProps {
+  onToggle: () => void;
+}
+function Navbar(props: IProps) {
+  const { onToggle } = props;
   return (
     <nav
       data-testid="navbar"
-      className="Navbar navbar navbar-expand navbar-dark bg-dark header"
+      className="Navbar navbar navbar-expand navbar-dark header"
     >
       <a href="/odds" className="navbar-brand">
         Nhl Odds
@@ -23,6 +28,7 @@ function Navbar() {
           </Link>
         </li>
       </div>
+      <DarkModeToggle onToggle={onToggle} />
     </nav>
   );
 }

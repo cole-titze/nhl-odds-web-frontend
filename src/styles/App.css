@@ -1,42 +1,32 @@
-html,
-body,
-body > div,
 .App {
+  --light-background: #f8fafd;
+  --light-text: #efefef;
+  --deep-light: #ffffff;
+  --deep-dark: #1f2023;
+  --dark-background: #121212;
+  --dark-text: #121212;
+  --dark-hover: #121212;
+  --light-hover: #f2f2f2;
+
+  --color-background: var(--light-background);
+  --color-foreground: var(--dark-text);
+  --deep-color-background: var(--deep-light);
+  --deep-color-foreground: var(--deep-dark);
+  --hover-color: var(--light-hover);
+
   height: 100%;
-  background: #f8fafd;
+  background: var(--color-background);
+  color: var(--color-foreground);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.App.dark {
+  --color-background: var(--dark-background);
+  --color-foreground: var(--light-text);
+  --deep-color-background: var(--deep-dark);
+  --deep-color-foreground: var(--deep-light);
+  --hover-color: var(--dark-hover);
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  height: 100%;
+  background: var(--color-background);
+  color: var(--color-foreground);
 }

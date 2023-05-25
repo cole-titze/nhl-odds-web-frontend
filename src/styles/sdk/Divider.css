@@ -1,3 +1,7 @@
 .HorizontalDivider {
   padding-top: 1rem;
 }
+.HorizontalDivider.Theme:not(#specificity) {
+  background: var(--color-background);
+  border-color: var(--deep-color-foreground);
+}

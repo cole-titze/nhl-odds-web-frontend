@@ -11,12 +11,12 @@ interface IProps {
 function ScoreCard(props: IProps) {
   const { homeGoals, awayGoals, hasBeenPlayed } = props;
   return (
-    <Card className="TeamScore">
+    <Card className="TeamScore Theme">
       <CardContent>
         <Typography variant="h6" component="div" align="center">
           Score
         </Typography>
-        <Typography variant="body1" color="text.primary" align="center">
+        <Typography variant="body1" className="Theme" align="center">
           {hasBeenPlayed ? (
             <>
               {awayGoals} - {homeGoals}

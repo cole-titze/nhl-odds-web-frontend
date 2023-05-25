@@ -27,7 +27,7 @@ function TeamCard(props: IProps): JSX.Element {
   };
 
   return (
-    <Card className="TeamCard">
+    <Card className="TeamCard Theme">
       <CardActionArea onClick={() => handleClick(team.id)}>
         <CardContent>
           <Stack spacing={0} justifyContent="center" alignItems="center">
@@ -43,22 +43,14 @@ function TeamCard(props: IProps): JSX.Element {
             direction="row"
             spacing={{ xs: 0, s: 1, md: 3 }}
           >
-            <Typography
-              component={"span"}
-              variant="body2"
-              color="text.secondary"
-            >
+            <Typography component={"span"} className="Theme" variant="body2">
               <h5>Model Odds</h5>
               Percent: {convertDecimalToPercentString(team.modelOdds)}
               <br></br>
               American: {convertDecimalToAmericanString(team.modelOdds)}
               <br></br>
             </Typography>
-            <Typography
-              component={"span"}
-              variant="body2"
-              color="text.secondary"
-            >
+            <Typography component={"span"} variant="body2" className="Theme">
               <h5>Vegas Odds</h5>
               Percent: {convertDecimalToPercentString(team.vegasOdds)}
               <br></br>

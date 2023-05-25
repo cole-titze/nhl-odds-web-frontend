@@ -36,7 +36,6 @@ function BasicDatePicker(props: IProps) {
           onChange={(newDate) => {
             setNewDate(newDate ?? dayjs());
           }}
-          sx={{ backgroundColor: "white" }}
         />
       </LocalizationProvider>
     </span>

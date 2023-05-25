@@ -24,7 +24,6 @@ function TeamHeader(props: IProps) {
             label={"Season Start Year"}
             value={dayjs().year(year)}
             onChange={onDateChange}
-            sx={{ backgroundColor: "white" }}
           />
         </LocalizationProvider>
       </Block>
