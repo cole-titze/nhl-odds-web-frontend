@@ -5,6 +5,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { GetSeasonStartYear } from "../utils/get-season-start-year";
 import TeamHeader from "./Team/TeamHeader";
 import TeamTable from "./TeamTable/TeamTable";
+import { getTeamListSkeleton } from "../utils/get-skeleton-data";
 
 function TeamListView() {
   const defaultSeasonStats: ISeasonStatTotals = {
@@ -19,17 +20,21 @@ function TeamListView() {
   };
   const currentSeasonStartYear = GetSeasonStartYear(dayjs());
 
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [year, setYear] = useState<number>(currentSeasonStartYear);
   const [teamList, setTeams] = useState<Array<ITeamSeasonStats>>([]);
   const [seasonStats, setStats] =
     useState<ISeasonStatTotals>(defaultSeasonStats);
 
   const getTeams = (year: number) => {
+    setIsLoading(true);
+    setTeams(getTeamListSkeleton());
     ApiService.getAllTeams(year)
       .then((response) => {
         const teamsVM: ITeamsVM = response.data.value;
         setTeams(teamsVM.teams);
         setStats(teamsVM.seasonTotals);
+        setIsLoading(false);
       })
       .catch((e: Error) => {
         console.log(e);
@@ -47,8 +52,17 @@ function TeamListView() {
 
   return (
     <div>
-      <TeamHeader header="Teams" year={year} onDateChange={onChangeCallback} />
-      <TeamTable teams={teamList} seasonStatTotals={seasonStats} />
+      <TeamHeader
+        header="Teams"
+        year={year}
+        isLoading={isLoading}
+        onDateChange={onChangeCallback}
+      />
+      <TeamTable
+        teams={teamList}
+        seasonStatTotals={seasonStats}
+        isLoading={isLoading}
+      />
     </div>
   );
 }

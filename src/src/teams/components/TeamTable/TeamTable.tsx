@@ -11,9 +11,10 @@ import TeamRow from "./TeamRow";
 interface IProps {
   teams: ITeamSeasonStats[];
   seasonStatTotals: ISeasonStatTotals;
+  isLoading: boolean;
 }
 function TeamTable(props: IProps) {
-  const { teams, seasonStatTotals } = props;
+  const { teams, seasonStatTotals, isLoading } = props;
 
   return (
     <TableContainer component={Paper}>
@@ -21,7 +22,7 @@ function TeamTable(props: IProps) {
         <TeamRowHeader />
         <TableBody>
           {teams.map((team) => (
-            <TeamRow key={team.id} team={team} />
+            <TeamRow key={team.id} team={team} isLoading={isLoading} />
           ))}
         </TableBody>
         <TeamRowFooter seasonStatTotals={seasonStatTotals} />

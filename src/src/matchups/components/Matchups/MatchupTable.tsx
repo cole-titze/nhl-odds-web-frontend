@@ -9,9 +9,10 @@ import MatchupRow from "./Table/MatchupRow";
 
 interface IProps {
   matchups: IGameOdds[];
+  isLoading: boolean;
 }
 function MatchupTable(props: IProps) {
-  const { matchups } = props;
+  const { matchups, isLoading } = props;
 
   return (
     <TableContainer className="MatchupTable" component={Paper}>
@@ -19,7 +20,11 @@ function MatchupTable(props: IProps) {
         <MatchupRowHeader />
         <TableBody>
           {matchups.map((matchup) => (
-            <MatchupRow key={matchup.id} matchup={matchup} />
+            <MatchupRow
+              key={matchup.id}
+              matchup={matchup}
+              isLoading={isLoading}
+            />
           ))}
         </TableBody>
       </Table>

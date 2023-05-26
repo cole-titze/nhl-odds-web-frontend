@@ -35,7 +35,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={appTheme}>
-      <div id="App" data-testid="app" className="App">
+      <div data-testid="app" className="App">
         <Navbar onToggle={toggleTheme} />
         <div className="container mt-3 main">
           <Routes>

@@ -31,7 +31,7 @@ function TeamRowFooter(props: IProps) {
       <TableRow>
         <TableCell align="center">Totals</TableCell>
         <TableCell align="center">-</TableCell>
-        <TableCell align="center"></TableCell>
+        <TableCell align="center">-</TableCell>
         <TableCell align="center">{modelLogLossFormatted}</TableCell>
         <TableCell align="center">{vegasLogLossFormatted}</TableCell>
         <TableCell align="center">
@@ -41,6 +41,7 @@ function TeamRowFooter(props: IProps) {
               backgroundColor: backgroundColor,
             }}
             label={logLossDifFormatted}
+            sx={{ height: "1.25rem" }}
           />
         </TableCell>
         <TableCell align="center">{totalModelAccurateGameCount}</TableCell>

@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
-import { CardActionArea } from "@mui/material";
+import { CardActionArea, Skeleton } from "@mui/material";
 import { IMatchupTeam, TEAM } from "../../../teams/types/types";
 import {
   convertDecimalToPercentString,
@@ -16,9 +16,10 @@ interface IProps {
   team: IMatchupTeam;
   hasBeenPlayed: boolean;
   winner: TEAM;
+  isLoading: boolean;
 }
 function TeamCard(props: IProps): JSX.Element {
-  const { team, hasBeenPlayed, winner } = props;
+  const { team, hasBeenPlayed, winner, isLoading } = props;
   const logo = "team-logos/" + team.logoUri;
 
   const navigate = useNavigate();
@@ -31,11 +32,40 @@ function TeamCard(props: IProps): JSX.Element {
       <CardActionArea onClick={() => handleClick(team.id)}>
         <CardContent>
           <Stack spacing={0} justifyContent="center" alignItems="center">
-            <img className="Image" src={logo} alt={team.locationName} />
+            {isLoading ? (
+              <Skeleton
+                animation="wave"
+                variant="circular"
+                width={100}
+                height={80}
+                style={{ marginBottom: 6 }}
+              />
+            ) : (
+              <img className="Image" src={logo} alt={team.locationName} />
+            )}
             <Typography variant="h5" component="div">
-              {team.teamName}
+              {isLoading ? (
+                <Skeleton
+                  animation="wave"
+                  variant="rounded"
+                  width={100}
+                  height={20}
+                  style={{ marginBottom: 6 }}
+                />
+              ) : (
+                team.teamName
+              )}
             </Typography>
-            {getTag(hasBeenPlayed, winner, team.team)}
+            {isLoading ? (
+              <Skeleton
+                animation="wave"
+                variant="rounded"
+                width={60}
+                height={20}
+              />
+            ) : (
+              getTag(hasBeenPlayed, winner, team.team)
+            )}
           </Stack>
           <br></br>
           <Stack
@@ -45,16 +75,56 @@ function TeamCard(props: IProps): JSX.Element {
           >
             <Typography component={"span"} className="Theme" variant="body2">
               <h5>Model Odds</h5>
-              Percent: {convertDecimalToPercentString(team.modelOdds)}
-              <br></br>
-              American: {convertDecimalToAmericanString(team.modelOdds)}
+              {isLoading ? (
+                <Skeleton
+                  animation="wave"
+                  variant="rounded"
+                  width={90}
+                  height={12}
+                  style={{ marginBottom: 8 }}
+                />
+              ) : (
+                "Percent: " +
+                convertDecimalToPercentString(team.modelOdds) +
+                "\n"
+              )}
+              {isLoading ? (
+                <Skeleton
+                  animation="wave"
+                  variant="rounded"
+                  width={90}
+                  height={12}
+                />
+              ) : (
+                "American: " + convertDecimalToAmericanString(team.modelOdds)
+              )}
               <br></br>
             </Typography>
             <Typography component={"span"} variant="body2" className="Theme">
               <h5>Vegas Odds</h5>
-              Percent: {convertDecimalToPercentString(team.vegasOdds)}
-              <br></br>
-              American: {convertDecimalToAmericanString(team.vegasOdds)}
+              {isLoading ? (
+                <Skeleton
+                  animation="wave"
+                  variant="rounded"
+                  width={90}
+                  height={12}
+                  style={{ marginBottom: 8 }}
+                />
+              ) : (
+                "Percent: " +
+                convertDecimalToPercentString(team.vegasOdds) +
+                "\n"
+              )}
+              {isLoading ? (
+                <Skeleton
+                  animation="wave"
+                  variant="rounded"
+                  width={90}
+                  height={12}
+                />
+              ) : (
+                "American: " + convertDecimalToAmericanString(team.vegasOdds)
+              )}
             </Typography>
           </Stack>
         </CardContent>

@@ -7,9 +7,10 @@ import ScoreCard from "./ScoreCard";
 
 interface IProps {
   matchups: IGameOdds[];
+  isLoading: boolean;
 }
 function Matchups(props: IProps) {
-  const { matchups } = props;
+  const { isLoading, matchups } = props;
 
   return (
     <Grid
@@ -26,6 +27,7 @@ function Matchups(props: IProps) {
                   team={awayTeam}
                   winner={winner}
                   hasBeenPlayed={hasBeenPlayed}
+                  isLoading={isLoading}
                 />
               </Grid>
               <Grid item xs={2}>
@@ -33,14 +35,16 @@ function Matchups(props: IProps) {
                   homeGoals={homeTeam.goals}
                   awayGoals={awayTeam.goals}
                   hasBeenPlayed={hasBeenPlayed}
+                  isLoading={isLoading}
                 />
-                <AtCard gameDate={gameDate} />
+                <AtCard gameDate={gameDate} isLoading={isLoading} />
               </Grid>
               <Grid item xs={3}>
                 <TeamCard
                   team={homeTeam}
                   winner={winner}
                   hasBeenPlayed={hasBeenPlayed}
+                  isLoading={isLoading}
                 />
               </Grid>
               <Grid item xs={2}></Grid>

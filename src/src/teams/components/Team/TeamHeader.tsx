@@ -4,20 +4,32 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
 import Block from "../../../sdk/components/Block";
-import { Divider } from "@mui/material";
+import { Divider, Skeleton } from "@mui/material";
 
 interface IProps {
   header: string;
   year: number;
+  isLoading: boolean;
   onDateChange: (newYear: Dayjs | null) => void;
 }
 
 function TeamHeader(props: IProps) {
-  const { header, year, onDateChange } = props;
+  const { header, year, isLoading, onDateChange } = props;
   return (
     <>
       <Block>
-        <h1 className="PageTitle">{header}</h1>
+        {isLoading ? (
+          <Skeleton
+            className="PageTitle"
+            animation="wave"
+            variant="rounded"
+            width={300}
+            height={50}
+            style={{ marginBottom: 8 }}
+          />
+        ) : (
+          <h1 className="PageTitle">{header}</h1>
+        )}
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             views={["year"]}

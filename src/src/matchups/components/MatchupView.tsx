@@ -6,11 +6,13 @@ import { getDefaultDateRange } from "../utils/get-default-date-range";
 import Matchups from "./Matchups/Matchups";
 import { isDateRangeEqual } from "../../sdk/utils/compare-dates";
 import MatchupHeader from "./Matchups/MatchupHeader";
+import { getMatchupSkeleton } from "../utils/get-skeleton-data";
 
 function MatchupView() {
   const defaultDateRange = useMemo(() => getDefaultDateRange(), []);
   const [matchupList, setMatchups] = useState<Array<IGameOdds>>([]);
   const [dateRange, setDateRange] = useState<IDateRange>(defaultDateRange);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const updateGameOdds = useCallback(
     (newDateRange: IDateRange): void => {
@@ -22,9 +24,12 @@ function MatchupView() {
   );
 
   const getGameOdds = (dateRange: IDateRange) => {
+    setIsLoading(true);
+    setMatchups(getMatchupSkeleton());
     ApiService.getPredictedGamesInDateRange(dateRange)
       .then((response) => {
         setMatchups(response.data.value);
+        setIsLoading(false);
       })
       .catch((e: Error) => {
         console.log(e);
@@ -42,7 +47,7 @@ function MatchupView() {
         defaultDateRange={defaultDateRange}
         onDateChange={updateGameOdds}
       />
-      <Matchups matchups={matchupList} />
+      <Matchups matchups={matchupList} isLoading={isLoading} />
     </div>
   );
 }

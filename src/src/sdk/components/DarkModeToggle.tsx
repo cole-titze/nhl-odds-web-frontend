@@ -15,13 +15,10 @@ function DarkModeToggle(props: IProps) {
   };
 
   useEffect(() => {
-    const appElement = document.getElementById("App");
     const root = document.getElementsByTagName("html")[0];
     if (isDark) {
-      appElement?.classList.add("dark");
       root?.classList.add("dark");
     } else {
-      appElement?.classList.remove("dark");
       root?.classList.remove("dark");
     }
   }, [isDark]);

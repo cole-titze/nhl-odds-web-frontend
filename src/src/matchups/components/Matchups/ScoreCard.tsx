@@ -2,14 +2,24 @@ import React, { memo } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import { Skeleton } from "@mui/material";
 
 interface IProps {
   homeGoals: number;
   awayGoals: number;
   hasBeenPlayed: boolean;
+  isLoading: boolean;
 }
 function ScoreCard(props: IProps) {
-  const { homeGoals, awayGoals, hasBeenPlayed } = props;
+  const { homeGoals, awayGoals, hasBeenPlayed, isLoading } = props;
+  const score = hasBeenPlayed ? (
+    <>
+      {awayGoals} - {homeGoals}
+    </>
+  ) : (
+    <>TBD</>
+  );
+
   return (
     <Card className="TeamScore Theme">
       <CardContent>
@@ -17,12 +27,15 @@ function ScoreCard(props: IProps) {
           Score
         </Typography>
         <Typography variant="body1" className="Theme" align="center">
-          {hasBeenPlayed ? (
-            <>
-              {awayGoals} - {homeGoals}
-            </>
+          {isLoading ? (
+            <Skeleton
+              animation="wave"
+              variant="rounded"
+              width={160}
+              height={15}
+            />
           ) : (
-            <>TBD</>
+            score
           )}
         </Typography>
       </CardContent>

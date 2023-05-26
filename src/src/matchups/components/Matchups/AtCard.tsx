@@ -3,12 +3,14 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import convertToLocalTime from "../../utils/convert-to-local-time";
+import { Skeleton } from "@mui/material";
 
 interface IProps {
   gameDate: Date;
+  isLoading: boolean;
 }
 function AtCard(props: IProps) {
-  const { gameDate } = props;
+  const { gameDate, isLoading } = props;
 
   return (
     <Card className="TeamAt Theme">
@@ -17,7 +19,17 @@ function AtCard(props: IProps) {
           @
         </Typography>
         <Typography className="Theme" variant="body2" align="center">
-          {convertToLocalTime(gameDate)}
+          {isLoading ? (
+            <Skeleton
+              animation="wave"
+              variant="rounded"
+              width={160}
+              height={15}
+              style={{ marginBottom: 6 }}
+            />
+          ) : (
+            convertToLocalTime(gameDate)
+          )}
         </Typography>
       </CardContent>
     </Card>
