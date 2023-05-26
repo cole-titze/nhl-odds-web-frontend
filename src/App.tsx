@@ -31,7 +31,6 @@ export default function App() {
             },
           });
     setTheme(theme);
-    console.log(appTheme.palette.mode);
   };
 
   return (

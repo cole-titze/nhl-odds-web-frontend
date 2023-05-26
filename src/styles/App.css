@@ -1,4 +1,16 @@
 .App {
+  height: 100%;
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+.App.dark {
+  height: 100%;
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+html {
   --light-background: #f8fafd;
   --light-text: #efefef;
   --deep-light: #ffffff;
@@ -14,19 +26,15 @@
   --deep-color-foreground: var(--deep-dark);
   --hover-color: var(--light-hover);
 
-  height: 100%;
   background: var(--color-background);
-  color: var(--color-foreground);
 }
 
-.App.dark {
+html.dark {
   --color-background: var(--dark-background);
   --color-foreground: var(--light-text);
   --deep-color-background: var(--deep-dark);
   --deep-color-foreground: var(--deep-light);
   --hover-color: var(--dark-hover);
 
-  height: 100%;
   background: var(--color-background);
-  color: var(--color-foreground);
 }
