@@ -33,13 +33,16 @@ function TeamRow(props: IProps) {
   const logo = "team-logos/" + logoUri;
 
   const navigate = useNavigate();
-  const handleRowClick = (id: number) => {
+  const handleRowClick = (id: number, isLoading: boolean) => {
+    if (isLoading) {
+      return;
+    }
     navigate(`/team/${id}`);
   };
 
   return (
     <TableRow
-      onClick={() => handleRowClick(id)}
+      onClick={() => handleRowClick(id, isLoading)}
       className="TeamRow"
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
