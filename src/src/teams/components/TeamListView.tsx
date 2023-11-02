@@ -2,8 +2,8 @@ import React, { useState, useEffect, memo } from "react";
 import ApiService from "../services/ApiService";
 import { ISeasonStatTotals, ITeamsVM, ITeamSeasonStats } from "../types/types";
 import dayjs, { Dayjs } from "dayjs";
-import { GetSeasonStartYear } from "../utils/get-season-start-year";
-import TeamHeader from "./Team/TeamHeader";
+import { GetSeasonStartYear } from "../sdk/utils/get-season-start-year";
+import TeamHeader from "../../sdk/components/DateHeader";
 import TeamTable from "./TeamTable/TeamTable";
 import { getTeamListSkeleton } from "../utils/get-skeleton-data";
 

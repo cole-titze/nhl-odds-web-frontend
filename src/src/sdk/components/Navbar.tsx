@@ -27,6 +27,11 @@ function Navbar(props: IProps) {
             Teams
           </Link>
         </li>
+        <li>
+          <Link to={"/logloss"} className="nav-link">
+            Log Losses
+          </Link>
+        </li>
       </div>
       <DarkModeToggle onToggle={onToggle} />
     </nav>

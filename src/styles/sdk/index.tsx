@@ -5,3 +5,4 @@ import "./Navbar.css";
 import "./Segment.css";
 import "./DarkModeToggle.css";
 import "./Theme.css";
+import "./LineChart.css";

@@ -3,7 +3,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
-import Block from "../../../sdk/components/Block";
+import Block from "../components/Block";
 import { Divider, Skeleton } from "@mui/material";
 
 interface IProps {
@@ -13,7 +13,7 @@ interface IProps {
   onDateChange: (newYear: Dayjs | null) => void;
 }
 
-function TeamHeader(props: IProps) {
+function DateHeader(props: IProps) {
   const { header, year, isLoading, onDateChange } = props;
   return (
     <>
@@ -43,4 +43,4 @@ function TeamHeader(props: IProps) {
     </>
   );
 }
-export default memo(TeamHeader);
+export default memo(DateHeader);

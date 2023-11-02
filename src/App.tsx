@@ -8,6 +8,7 @@ import MatchupView from "./src/matchups/components/MatchupView";
 import TeamView from "./src/teams/components/TeamView";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme, Theme } from "@mui/material";
+import LogLossView from "./src/logloss/components/LogLossView";
 
 export default function App() {
   let theme = createTheme({
@@ -43,6 +44,7 @@ export default function App() {
             <Route path="/odds" element={<MatchupView />} />
             <Route path="/teams" element={<TeamListView />} />
             <Route path="/team/:teamId" element={<TeamView />} />
+            <Route path="/logloss" element={<LogLossView />} />
           </Routes>
         </div>
       </div>

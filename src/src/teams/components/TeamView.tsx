@@ -5,10 +5,10 @@ import dayjs, { Dayjs } from "dayjs";
 import { useParams } from "react-router-dom";
 import Team from "./Team/Team";
 import Block from "../../sdk/components/Block";
-import { GetSeasonStartYear } from "../utils/get-season-start-year";
-import TeamHeader from "./Team/TeamHeader";
+import { GetSeasonStartYear } from "../sdk/utils/get-season-start-year";
 import MatchupTable from "../../matchups/components/Matchups/MatchupTable";
 import { getTeamSkeleton } from "../utils/get-skeleton-data";
+import DateHeader from "../../sdk/components/DateHeader";
 
 function TeamView() {
   const { teamId: teamIdStr } = useParams();
@@ -60,7 +60,7 @@ function TeamView() {
 
   return (
     <>
-      <TeamHeader
+      <DateHeader
         header={header}
         year={year}
         isLoading={isLoading}
