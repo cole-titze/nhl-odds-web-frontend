@@ -1,6 +1,7 @@
 import { ILogLossesVM } from "../types/types";
-import { ChartDataset, ChartData } from 'chart.js';
+import { ChartDataset } from 'chart.js';
 
+// eslint-disable-next-line
 export function GetDatasetsFromLogLosses(logLosses: ILogLossesVM): any {
     const modelDataset: ChartDataset = {
         label: "Model",

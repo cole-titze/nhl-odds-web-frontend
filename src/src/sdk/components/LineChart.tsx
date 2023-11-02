@@ -4,6 +4,7 @@ import { Chart as ChartJS, registerables } from 'chart.js';
 
 ChartJS.register(...registerables);
 
+// eslint-disable-next-line
 function LineChart(chartData: any) {
 
     const options = {

@@ -11,19 +11,8 @@ import { ChartData } from "chart.js";
 
 function TeamView() {
   const currentSeasonStartYear = GetSeasonStartYear(dayjs());
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [year, setYear] = useState<number>(currentSeasonStartYear);
   const [chartData, setChartData] = useState<ChartData | null>(null);
-  const [logLosses, setLogLosses] = useState<ILogLossesVM>(
-    {
-      gameCounts: [],
-      modelLogLosses: [],
-      draftKingsLogLosses: [],
-      betMgmLogLosses: [],
-      bovadaLogLosses: [],
-      barstoolLogLosses: []
-    }
-  );
 
   const onChangeCallback = (newYear: Dayjs | null) => {
     if (newYear === null || newYear.year() === year) return;
@@ -31,13 +20,10 @@ function TeamView() {
   };
 
   const getLogLosses = (year: number, teamId: number | null) => {
-    setIsLoading(true);
     ApiService.getLogLossesForSeason(year, teamId)
       .then((response) => {
         const logLossesVM: ILogLossesVM = response.data.value;
-        setLogLosses(logLossesVM);
         setChartData(GetDatasetsFromLogLosses(logLossesVM));
-        setIsLoading(false);
       })
       .catch((e: Error) => {
         console.log(e);
